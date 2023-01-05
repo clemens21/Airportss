@@ -8,7 +8,7 @@ import pickle
 
 
 # On start
-MongoDB_Client(username="clemensm",password="soccer21")
+MongoDB_Client(username="*******",password="*******")
 
 kcos = Airport(ident_='KCOS')
 kden = Airport(ident_='KDEN')
