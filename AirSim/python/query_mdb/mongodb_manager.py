@@ -1,0 +1,35 @@
+#C:\ProgramData\Microsoft\Windows\Start Menu\Programs\"Python 3.7" python
+
+# "mongodb+srv://mclemens:soccer21@cluster0.oq6rwps.mongodb.net/test"
+
+import pymongo
+import pdb
+
+class MongoDB_Client:
+
+    client = ''
+    db = ''
+    isclient = False
+    username = ''
+    
+    def __init__(self,username: str,password: str):
+        if MongoDB_Client.isclient: pass
+        MongoDB_Client.isclient = True
+        # mystr = "mongodb+srv://"+str(username)+":"+str(password)+"@cluster0.oq6rwps.mongodb.net/test"
+        MongoDB_Client.client = pymongo.MongoClient("mongodb+srv://mclemens:soccer21@cluster0.oq6rwps.mongodb.net/test")
+        MongoDB_Client.db = MongoDB_Client.client["AirSim_MDB"]
+        MongoDB_Client.username = username
+        
+
+    def close_mongodb_install():
+        MongoDB_Client.client.close()
+        try: 
+            MongoDB_Client.client.admin.command('ismaster')
+            return False
+        except: return True
+
+    def get_client(self):
+        return MongoDB_Client.client
+
+    def get_db():
+        return MongoDB_Client.db
